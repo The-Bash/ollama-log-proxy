@@ -1,0 +1,12 @@
+{
+  "model": "nomic-embed-text",
+  "embeddings": [[0.1, 0.2, 0.3, 0.4, 0.5]],
+  "total_duration": 1200000000,
+  "load_duration": 500000000,
+  "prompt_eval_count": 8,
+  "usage": {
+    "prompt_tokens": 8,
+    "completion_tokens": 0,
+    "total_tokens": 8
+  }
+}
