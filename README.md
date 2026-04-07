@@ -1,10 +1,8 @@
 # ollama-log-proxy
 
 [![CI](https://github.com/The-Bash/ollama-log-proxy/actions/workflows/ci.yml/badge.svg)](https://github.com/The-Bash/ollama-log-proxy/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/ollama-log-proxy)](https://pypi.org/project/ollama-log-proxy/)
-[![Python](https://img.shields.io/pypi/pyversions/ollama-log-proxy)](https://pypi.org/project/ollama-log-proxy/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Docker](https://img.shields.io/docker/v/thebash/ollama-log-proxy?label=docker)](https://hub.docker.com/r/thebash/ollama-log-proxy)
 
 HTTP reverse proxy for [Ollama](https://ollama.com) that logs every inference call to a configurable backend. Zero-config start with SQLite. Built-in dashboard. Prometheus metrics.
 
@@ -57,13 +55,21 @@ Response data is streamed chunk-by-chunk from Ollama to the client in real time.
 ## Install
 
 ```bash
-pip install ollama-log-proxy
+pip install git+https://github.com/The-Bash/ollama-log-proxy.git
 ```
 
 With PostgreSQL support:
 
 ```bash
-pip install ollama-log-proxy[postgres]
+pip install "ollama-log-proxy[postgres] @ git+https://github.com/The-Bash/ollama-log-proxy.git"
+```
+
+Or clone and install locally:
+
+```bash
+git clone https://github.com/The-Bash/ollama-log-proxy.git
+cd ollama-log-proxy
+pip install .
 ```
 
 ## Quick Start
@@ -84,11 +90,20 @@ ollama-log-proxy --dashboard 8080 --metrics-port 9090
 
 Open `http://localhost:8080` for the dashboard. Prometheus scrapes from `http://localhost:9090/metrics`.
 
-### 3. Docker Compose (Full Stack)
+### 3. Docker
 
 ```bash
 git clone https://github.com/The-Bash/ollama-log-proxy.git
 cd ollama-log-proxy
+docker build -t ollama-log-proxy .
+docker run -p 11433:11433 -p 8080:8080 -p 9090:9090 ollama-log-proxy \
+  --ollama-url http://host.docker.internal:11434 \
+  --dashboard 8080 --metrics-port 9090
+```
+
+Or use the included Compose file for a full stack (proxy + Ollama + Grafana):
+
+```bash
 docker compose up -d
 ```
 
