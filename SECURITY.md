@@ -13,7 +13,7 @@ If you discover a security vulnerability in ollama-log-proxy, please report it r
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Instead, please email **security@hilal.dev** with:
+Instead, report it privately through GitHub: open the repository's **Security** tab and choose **Report a vulnerability** (https://github.com/The-Bash/ollama-log-proxy/security/advisories/new). Include:
 
 - A description of the vulnerability
 - Steps to reproduce

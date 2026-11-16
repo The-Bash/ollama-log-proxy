@@ -10,7 +10,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [
-    { name = "Besher Hilal", email = "besher@thebash.dev" },
+    { name = "Besher Hilal", email = "45563688+The-Bash@users.noreply.github.com" },
 ]
 keywords = ["ollama", "proxy", "logging", "llm", "inference"]
 classifiers = [
